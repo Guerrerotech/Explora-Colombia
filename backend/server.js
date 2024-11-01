@@ -8,6 +8,10 @@ const sitiosRouter = require('./routes/sitios');
 app.use(cors());
 app.use(express.json());
 app.use('/sitios', sitiosRouter);
+// Ruta de prueba para la página principal
+app.get('/', (req, res) => {
+  res.send('Bienvenido a Explora Colombia API');
+});
 // Conexión a MongoDB
 mongoose.connect('mongodb+srv://guerrerotechia:1BR6SJQIMRoIWcAE@cluster0.5jw1f.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
   .then(() => console.log('Conectado a MongoDB'))
