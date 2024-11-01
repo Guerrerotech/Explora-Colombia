@@ -1,7 +1,38 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import PoliticaPrivacidad from './PoliticaPrivacidad';
+import CookieConsent from './CookieConsent';
 import './App.css';
 
+
 function App() {
+  return (
+    <div className="App">
+      <CookieConsent />
+
+      <nav style={{ marginBottom: '20px' }}>
+        <Link to="/" style={{ marginRight: '10px' }}>Inicio</Link>
+        <Link to="/politica-privacidad">Política de Privacidad</Link>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={
+          <>
+            <header className="App-header-banner" style={{ backgroundImage: 'url(/banner.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', padding: '50px 20px', color: 'white', borderRadius: '10px', marginBottom: '40px', position: 'relative' }}>
+              <div style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)', padding: '20px', borderRadius: '10px' }}>
+                <h1>Explora y Descubre la Belleza de Colombia</h1>
+                <p>En esta página podrás registrar y explorar diversos sitios turísticos de Colombia, para que otros puedan conocer y disfrutar de las maravillas que ofrece nuestro país.</p>
+              </div>
+            </header>
+            {/* Todo el contenido de la página de inicio */}
+          </>
+        } />
+        <Route path="/politica-privacidad" element={<PoliticaPrivacidad />} />
+      </Routes>
+    </div>
+  );
+}
+ 
   // Estado para almacenar los sitios registrados
   const [sitios, setSitios] = useState([]);
 
@@ -18,7 +49,7 @@ function App() {
 
   // useEffect para obtener los sitios del backend al cargar la página
   useEffect(() => {
-    fetch('http://localhost:5000/sitios')
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/sitios`)
       .then(response => response.json())
       .then(data => setSitios(data))
       .catch(error => console.error('Error fetching sitios:', error));
@@ -28,7 +59,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Enviar los datos al backend
-    fetch('http://localhost:5000/sitios', {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/sitios`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -73,7 +104,6 @@ const scrollToTop = () => {
   <div style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)', padding: '20px', borderRadius: '10px' }}>
     <h1>Explora y Descubre la Belleza de Colombia</h1>
     <p>En esta página podrás registrar y explorar diversos sitios turísticos de Colombia, para que otros puedan conocer y disfrutar de las maravillas que ofrece nuestro país.</p>
-    
   </div>
   <button
     onClick={() => {
