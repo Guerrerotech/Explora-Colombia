@@ -73,8 +73,6 @@ const scrollToTop = () => {
   <div style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)', padding: '20px', borderRadius: '10px' }}>
     <h1>Explora y Descubre la Belleza de Colombia</h1>
     <p>En esta página podrás registrar y explorar diversos sitios turísticos de Colombia, para que otros puedan conocer y disfrutar de las maravillas que ofrece nuestro país.</p>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4090238530291082"
-     crossorigin="anonymous"></script>
   </div>
   <button
     onClick={() => {
