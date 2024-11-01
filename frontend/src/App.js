@@ -18,7 +18,7 @@ function App() {
 
   // useEffect para obtener los sitios del backend al cargar la página
   useEffect(() => {
-    fetch('http://localhost:5000/sitios')
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/sitios`)
       .then(response => response.json())
       .then(data => setSitios(data))
       .catch(error => console.error('Error fetching sitios:', error));
@@ -28,7 +28,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Enviar los datos al backend
-    fetch('http://localhost:5000/sitios', {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/sitios`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
