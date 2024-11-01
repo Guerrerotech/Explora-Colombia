@@ -1,6 +1,25 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import PoliticaPrivacidad from './PoliticaPrivacidad';
 import './App.css';
 
+function Main() {
+  return (
+    <Router>
+      <div>
+        <nav>
+          <Link to="/">Inicio</Link> | <Link to="/politica-privacidad">Política de Privacidad</Link>
+        </nav>
+        <Switch>
+          <Route exact path="/" component={App} />
+          <Route path="/politica-privacidad" component={PoliticaPrivacidad} />
+        </Switch>
+      </div>
+    </Router>
+  );
+}
+
+export default Main;
 function App() {
   // Estado para almacenar los sitios registrados
   const [sitios, setSitios] = useState([]);
