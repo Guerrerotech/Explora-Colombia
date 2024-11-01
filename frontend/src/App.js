@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import PoliticaPrivacidad from './PoliticaPrivacidad';
+import CookieConsent from './CookieConsent';
 import './App.css';
 
-function Main() {
-  return (
+
+function App() {
+    return (
     <Router>
       <div>
         <nav>
@@ -18,9 +20,17 @@ function Main() {
     </Router>
   );
 }
-
-export default Main;
-function App() {
+return (
+    <div className="App">
+      <CookieConsent />
+      {/* Todo el contenido de la aplicación */}
+      <header className="App-header-banner">
+        {/* Contenido del banner */}
+      </header>
+      {/* Resto de las secciones */}
+    </div>
+  );
+}
   // Estado para almacenar los sitios registrados
   const [sitios, setSitios] = useState([]);
 
