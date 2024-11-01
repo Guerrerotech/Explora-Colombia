@@ -6,31 +6,33 @@ import './App.css';
 
 
 function App() {
-    return (
-    <Router>
-      <div>
-        <nav>
-          <Link to="/">Inicio</Link> | <Link to="/politica-privacidad">Política de Privacidad</Link>
-        </nav>
-        <Switch>
-          <Route exact path="/" component={App} />
-          <Route path="/politica-privacidad" component={PoliticaPrivacidad} />
-        </Switch>
-      </div>
-    </Router>
-  );
-}
-return (
+  return (
     <div className="App">
       <CookieConsent />
-      {/* Todo el contenido de la aplicación */}
-      <header className="App-header-banner">
-        {/* Contenido del banner */}
-      </header>
-      {/* Resto de las secciones */}
+
+      <nav style={{ marginBottom: '20px' }}>
+        <Link to="/" style={{ marginRight: '10px' }}>Inicio</Link>
+        <Link to="/politica-privacidad">Política de Privacidad</Link>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={
+          <>
+            <header className="App-header-banner" style={{ backgroundImage: 'url(/banner.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', padding: '50px 20px', color: 'white', borderRadius: '10px', marginBottom: '40px', position: 'relative' }}>
+              <div style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)', padding: '20px', borderRadius: '10px' }}>
+                <h1>Explora y Descubre la Belleza de Colombia</h1>
+                <p>En esta página podrás registrar y explorar diversos sitios turísticos de Colombia, para que otros puedan conocer y disfrutar de las maravillas que ofrece nuestro país.</p>
+              </div>
+            </header>
+            {/* Todo el contenido de la página de inicio */}
+          </>
+        } />
+        <Route path="/politica-privacidad" element={<PoliticaPrivacidad />} />
+      </Routes>
     </div>
   );
 }
+ 
   // Estado para almacenar los sitios registrados
   const [sitios, setSitios] = useState([]);
 
